@@ -9,7 +9,7 @@ import styles from './PopularCourseCarousel.module.scss'
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Image from "next/image";
-import { CartButtons } from "@/components/Courses/CartButtons";
+// import { CartButtons } from "@/components/Courses/CartButtons";
 import { FaStar } from "react-icons/fa6";
 import Link from "next/link";
 
@@ -106,7 +106,8 @@ export default function Popular_Course_Carousel({ courses }: any) {
                                     <span className={styles.price_earn}>Earn Tk 80</span>
                                 </div>
                             </div>
-                            <CartButtons course={course} />
+                            {/*<CartButtons course={course} />*/}
+                            <button>Add to cart</button>
                         </div>
                     </SwiperSlide>
                 ))}
