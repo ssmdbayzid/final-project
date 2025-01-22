@@ -1,6 +1,5 @@
 
 import styles from "./MostPopularBundle.module.scss"
-// import Popular_Course_Carousel from "./Popular_Course_Carousel";
 import Link from "next/link";
 
 const getAllCourses = async () => {
