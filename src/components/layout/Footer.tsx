@@ -1,5 +1,5 @@
 'use client'
-import styles from '../../styles/components/Layout/Footer.module.scss'
+import styles from '@/styles/components/layout/Footer.module.scss'
 import {FaFacebookF} from "react-icons/fa";
 import {FaTwitter} from "react-icons/fa";
 import {FaYoutube} from "react-icons/fa";
