@@ -21,8 +21,8 @@ export default async function MostPopularBundle() {
                     <Link href="/bundles" className="btn">All</Link>
                 </div>
                 <div>
-                    {courses && <Popular_Course_Carousel courses={courses} />}
-                    {/*{courses && <p>{courses.length}</p>}*/}
+                    {/*{courses && <Popular_Course_Carousel courses={courses} />}*/}
+                    {courses && <p>{courses.length}</p>}
                 </div>
             </div>
         </div>
