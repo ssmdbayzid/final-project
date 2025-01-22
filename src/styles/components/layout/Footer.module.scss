@@ -1,0 +1,98 @@
+@import '@/styles/utility/variables';
+.footer{
+  background-color: #202020;
+  padding: 50px 0 15px;
+  color:$white;
+  margin-top: 50px;
+}
+.footerArea{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:30px;
+}
+
+.content{
+  .titleContainer{
+    color: $white;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    .icon{display: none}
+  }
+  ul li{
+    color: rgba($white, 0.7);
+    margin-bottom: 10px;
+    .callIcon{
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+  }
+
+}
+
+.input{
+  background: rgba($black, 0.1);
+  outline: none;
+  border: 1px solid $primary-color;
+  padding: 15px 30px;
+  color: $primary-color;
+}
+
+.copyRight{
+  padding-top: 15px;
+  margin-top: 30px;
+
+  color: rgba($white, 0.7);;
+  font-weight: 500;
+  border-top: 2px solid rgba($white, 0.2);
+  span{
+    font-weight: 700;
+    text-wrap: nowrap;
+  }
+  .links{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .copyRightContent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .footerArea{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 768px){
+  .footerArea{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .content:nth-of-type(1) .titleContainer,
+  .content:nth-of-type(2) .titleContainer {
+    border-bottom: 2px solid #373737;
+  }
+  .content:nth-of-type(1) .list,
+  .content:nth-of-type(2) .list{
+    position: absolute; top: 0; width: 95%; height: 100%; color:red; z-index: 999;
+  }
+  .content{
+    transition: all 0.2s;
+    &.active{
+      .icon{rotate:180deg}
+      .list{position: relative}
+    }
+    .titleContainer{
+      display: flex;
+      justify-content: space-between;
+      //overflow: hidden;
+      .icon{display: block; fill: white}
+    }
+
+  }
+
+
+}
