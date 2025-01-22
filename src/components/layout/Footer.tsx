@@ -11,8 +11,6 @@ import React, {useState} from "react";
 export default function Footer() {
     const [openMenu, setOpenMenu] = useState(false);
     const [openSecondList, setOpenSecondList] = useState(false);
-
-    console.log(openSecondList)
     return (
         <div className={styles.footer}>
             <div className="">
