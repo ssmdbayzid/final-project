@@ -3,17 +3,11 @@ import {connectDb} from "@/lib/config";
 import Course from "@/lib/model/courseModel";
 import {NextResponse} from "next/server";
 
-const connectedDB = async()  =>{
-    try {
-        await connectDb()
-    }catch(err){console.log(err)}
-}
-connectedDB().catch(err=>console.log(err))
-
 
 
 export async function GET(){
 try {
+    await connectDb()
     const courses = await Course.find();
 
     return NextResponse.json({
