@@ -12,52 +12,71 @@ const connectedDB = async()  =>{
 connectedDB().catch(err=>console.log(err))
 
 
-export async function GET(req:NextRequest,){
-    const searchParams = req.nextUrl.searchParams;
-    const pageNumber = parseInt(searchParams.get("page") || "1", 10);
-    const keyword = searchParams.get("keyword");
+export async function GET(req: NextRequest) {
+    try {
+        // Ensure database connection
+        await connectDb();
 
+        const searchParams = req.nextUrl.searchParams;
+        const pageNumber = parseInt(searchParams.get("page") || "1", 10);
+        const keyword = searchParams.get("keyword");
 
-    const limit = 9;
-    const skip = (pageNumber- 1) * limit;
+        const limit = 9;
+        const skip = (pageNumber - 1) * limit;
 
-    let courses;
-    let totalCourses;
+        let courses = [];
+        let totalCourses = 0;
 
-    if(pageNumber){
-        courses = await Course.find().skip(skip).limit(limit);
-        totalCourses = await Course.countDocuments();
-    }if(keyword){
-        const matchQuery = {categories: {$regex: keyword, $options: "i"}}
-        courses = await Course.aggregate([
-            {$match: matchQuery},
-            {$skip: skip},
-            {$limit: limit},
-        ])
-        totalCourses = await Course.countDocuments(matchQuery);
-    }
-    // Ensure totalCourses is defined before calculating totalPages
-    if (totalCourses === undefined || totalCourses === 0) {
+        if (keyword) {
+            // Optimized query with `$regex` for keyword matching
+            const matchQuery = { categories: { $regex: keyword, $options: "i" } };
+            const results = await Course.aggregate([
+                { $match: matchQuery },
+                { $facet: {
+                        data: [
+                            { $skip: skip },
+                            { $limit: limit },
+                        ],
+                        total: [{ $count: "count" }],
+                    }},
+            ]);
+
+            courses = results[0]?.data || [];
+            totalCourses = results[0]?.total[0]?.count || 0;
+        } else {
+            // Paginated query without keyword
+            courses = await Course.find().skip(skip).limit(limit);
+            totalCourses = await Course.countDocuments();
+        }
+
+        if (totalCourses === 0) {
+            return NextResponse.json({
+                message: "No courses found",
+                data: [],
+                total: 0,
+                page: pageNumber,
+                totalPages: 0,
+            });
+        }
+
         return NextResponse.json({
-            message: "No courses found",
-            data: [],
-            total: 0,
+            message: "Courses fetched successfully",
+            data: courses,
+            total: totalCourses,
             page: pageNumber,
-            totalPages: 0,
+            totalPages: Math.ceil(totalCourses / limit),
         });
+    } catch (error) {
+        console.error(error);
+        const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+        return NextResponse.json({ success: false, error: errorMessage });
     }
-
-    return NextResponse.json({
-        message: "this from course",
-        data: courses,
-        total: totalCourses,
-        page: pageNumber,
-        totalPages: Math.ceil(totalCourses / limit), // Safe calculation
-    });
 }
+
 
 export async function POST(req:NextRequest){
     const body = await req.json()
     const newCourse = await Course.create(body);
     return NextResponse.json({message:"this from course post", data:newCourse})
 }
+
