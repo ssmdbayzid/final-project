@@ -6,7 +6,7 @@ export default function HeroSection() {
     return (
         <div className="container">
             {/*----------- Category Menu -----------*/}
-
+            <p>Testing</p>
             <div className={styles.banner}>
                 <div className={styles.sectionArea}>
                     <div className={styles.heroContent}>
