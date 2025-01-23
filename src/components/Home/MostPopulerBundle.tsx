@@ -8,6 +8,7 @@ const getAllCourses = async () => {
        const data = await response.json();
        return data ? data.data : null;
    }catch (e) {
+       console.log(e);
        return null;
    }
 
