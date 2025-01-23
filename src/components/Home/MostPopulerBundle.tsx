@@ -19,8 +19,6 @@ const getAllCourses = async () => {
 
 export default async function MostPopularBundle() {
     const courses = await getAllCourses()
-
-    console.log(process.env.API_URL)
     return (
         <div className="">
             <div className="container ">
