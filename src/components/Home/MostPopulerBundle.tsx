@@ -17,7 +17,7 @@ export default async function MostPopularBundle() {
             <div className="container ">
                 <div className={` ${styles.titleContainer}`}>
                     <h1 className="section-title">Most Popular Courses</h1>
-                    <Link href="/bundles" className="btn">All</Link>
+                    <Link href="/" className="btn">All</Link>
                 </div>
                 <div>
                     {/*{courses && <Popular_Course_Carousel courses={courses} />}*/}
