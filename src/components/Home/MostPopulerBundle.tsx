@@ -5,7 +5,7 @@ import Popular_Course_Carousel from "@/components/Home/Popular_Course_Carousel";
 
 const getAllCourses = async () => {
    try {
-       const response = await fetch(`${process.env.API_URL_Main}/api/course`);
+       const response = await fetch(`${process.env.API_URL}/api/course`);
        const data = await response.json();
        return data ? data.data : null;
    }catch (e) {

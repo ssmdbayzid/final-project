@@ -17,8 +17,7 @@ const nextConfig: NextConfig = {
         ],
     },
     env: {
-        // API_URL: process.env.API_URL || "http://localhost:3000",
-        API_URL: process.env.API_URL_Main || "http://localhost:3000",
+        API_URL: process.env.API_URL_Main ,
         DB_URL:process.env.DB_URL,
     },
 };
