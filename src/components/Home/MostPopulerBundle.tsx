@@ -3,9 +3,14 @@ import styles from "./MostPopularBundle.module.scss"
 import Link from "next/link";
 
 const getAllCourses = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course`);
-    const data = await response.json();
-    return data ? data.data : null;
+   try {
+       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course`);
+       const data = await response.json();
+       return data ? data.data : null;
+   }catch (e) {
+       return null;
+   }
+
 }
 
 export default async function MostPopularBundle() {
@@ -21,7 +26,9 @@ export default async function MostPopularBundle() {
                 </div>
                 <div>
                     {/*{courses && <Popular_Course_Carousel courses={courses} />}*/}
-                    {courses && <p>{courses.length}</p>}
+                    {courses && courses.length > 0 ? (<p>{courses.length}</p>)
+                    :( <p>No Data</p>)
+                    }
                 </div>
             </div>
         </div>
