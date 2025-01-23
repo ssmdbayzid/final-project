@@ -30,7 +30,7 @@ export default async function MostPopularBundle() {
                 </div>
                 <div>
                     {courses && courses.length > 0 ? (<Popular_Course_Carousel courses={courses} />)
-                    :( <p>No Data</p>)
+                    :( <p>No Data Whats wrong with me</p>)
                     }
                 </div>
             </div>
