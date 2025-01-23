@@ -3,9 +3,9 @@ import styles from "./MostPopularBundle.module.scss"
 import Link from "next/link";
 
 const getAllCourses = async () => {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course`);
-    const courses = await data.json();
-    return courses ? courses.data : null;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course`);
+    const data = await response.json();
+    return data ? data.data : null;
 }
 
 export default async function MostPopularBundle() {
