@@ -4,8 +4,8 @@ import Link from "next/link";
 import Popular_Course_Carousel from "@/components/Home/Popular_Course_Carousel";
 
 const getAllCourses = async () => {
-   try {
-       const response = await fetch(`${process.env.API_URL}/api/course`);
+    try {
+       const response = await fetch(`${process.env.API_URL_Main}/api/course`);
        const data = await response.json();
        return data ? data.data : null;
    }catch (e) {
@@ -20,7 +20,7 @@ const getAllCourses = async () => {
 export default async function MostPopularBundle() {
     const courses = await getAllCourses()
 
-    console.log(courses)
+    console.log(process.env.API_URL)
     return (
         <div className="">
             <div className="container ">
