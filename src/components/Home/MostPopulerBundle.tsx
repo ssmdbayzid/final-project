@@ -1,10 +1,11 @@
 
 import styles from "./MostPopularBundle.module.scss"
 import Link from "next/link";
+import Popular_Course_Carousel from "@/components/Home/Popular_Course_Carousel";
 
 const getAllCourses = async () => {
    try {
-       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course`);
+       const response = await fetch(`${process.env.API_URL}/api/course`);
        const data = await response.json();
        return data ? data.data : null;
    }catch (e) {
@@ -13,6 +14,8 @@ const getAllCourses = async () => {
    }
 
 }
+
+
 
 export default async function MostPopularBundle() {
     const courses = await getAllCourses()
@@ -26,8 +29,7 @@ export default async function MostPopularBundle() {
                     <Link href="/" className="btn">All</Link>
                 </div>
                 <div>
-                    {/*{courses && <Popular_Course_Carousel courses={courses} />}*/}
-                    {courses && courses.length > 0 ? (<p>{courses.length}</p>)
+                    {courses && courses.length > 0 ? (<Popular_Course_Carousel courses={courses} />)
                     :( <p>No Data</p>)
                     }
                 </div>
