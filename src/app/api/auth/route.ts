@@ -1,4 +1,4 @@
-
+export const dynamic = 'force-dynamic';
 import {connectDb} from "@/lib/config";
 import Course from "@/lib/model/courseModel";
 import {NextResponse} from "next/server";
@@ -15,6 +15,7 @@ connectedDB().catch(err=>console.log(err))
 export async function GET(){
 try {
     const courses = await Course.find();
+
     return NextResponse.json({
         success: true,
         data: courses,

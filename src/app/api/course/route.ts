@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import {NextRequest, NextResponse} from "next/server";
 import {connectDb} from "@/lib/config";
 import Course from "@/lib/model/courseModel";
