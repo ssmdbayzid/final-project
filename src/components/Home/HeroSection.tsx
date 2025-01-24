@@ -11,7 +11,7 @@ export default function HeroSection() {
                 <div className={styles.sectionArea}>
                     <div className={styles.heroContent}>
                         <h1>What do you want to learn?</h1>
-                        <p>Over 200+ affordable courses to empower your future</p>
+                        <p>Over 200+ affordable courses to empower your future !!</p>
                         <div className={styles.btnContainer}>
                             <Link href="/apply" className={`btn ${styles.btn1}`}> Subscription</Link>
                             <Link href="/about" className={`btn ${styles.btn2}`}> Refer And Earn</Link>
