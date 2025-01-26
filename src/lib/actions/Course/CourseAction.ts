@@ -8,7 +8,7 @@
 
 export const fetchCourses = async (page:any, keyword:any) => {
     try {
-
+        console.log(page)
         const queryParams = new URLSearchParams();
 
         if(page){
@@ -17,18 +17,18 @@ export const fetchCourses = async (page:any, keyword:any) => {
         if(keyword){
             queryParams.append("keyword", keyword);
         }
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course?${queryParams.toString()}`);
+        const response = await fetch(`${process.env.API_URL_Main}/api/course?${queryParams.toString()}`);
         if(!response.ok){
             return {
                 success: false,
                 error: `Failed to fetch courses. Status: ${response.status}`,
             };
         }
-        const data = await response.json();
+        const result = await response.json();
 
         return {
             success: true,
-            data,
+            data: result.data,
         };
     }catch(error){
         return {
