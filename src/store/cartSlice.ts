@@ -7,10 +7,17 @@ import {RootState} from "@/store/store";
 interface CounterState {
     value: number
 }
+ const loadCartFromLocalStorage = ()=>{
+    if(typeof window !== 'undefined'){
+         const storedCart = localStorage.getItem('counter')
+        return storedCart ? JSON.parse(storedCart) : [];
+    }
+    return [];
+ }
 
 // Define the initial state using that type
 const initialState: CounterState = {
-    value:  0,
+    value:  loadCartFromLocalStorage(),
 }
 
 export const counterSlice = createSlice({

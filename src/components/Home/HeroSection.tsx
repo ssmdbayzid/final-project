@@ -3,12 +3,22 @@ import styles from './HeroSection.module.scss';
 import Link from "next/link";
 import {useAppDispatch, useAppSelector} from "@/store/storeHooks";
 import {decrement, increment} from "@/store/cartSlice";
+import {useEffect, useState} from "react";
 
 
 export default function HeroSection() {
+   const [isMounted, setIsMounted] = useState(false);
+
     const count = useAppSelector(state=> state.cart.value)
-    console.log(count)
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, []);
+
+    if(!isMounted){
+        return null;
+    }
     return (
         <div className="container">
             {/*----------- Category Menu -----------*/}
@@ -23,7 +33,7 @@ export default function HeroSection() {
                             <Link href="/about" className={`btn ${styles.btn2}`}> Refer And Earn</Link>
                         </div>
                         <button onClick={()=>dispatch(decrement())}>Decrement</button>
-                        {count}
+                        {count ? count : "0"}
                         <button onClick={()=>dispatch(increment())}>Increment</button>
                     </div>
                 </div>
