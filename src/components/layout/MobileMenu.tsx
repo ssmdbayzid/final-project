@@ -1,5 +1,5 @@
 'use client'
-import styles from "../../styles/components/Layout/MenuIcon.module.scss"
+import styles from "@/styles/components/Layout/MenuIcon.module.scss"
 import logo from "@/assets/image/logo.png";
 import Image from "next/image";
 import { RxCross2 } from "react-icons/rx";

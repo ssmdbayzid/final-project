@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../../styles/components/Layout/Header.module.scss";
+import styles from "@/styles/components/Layout/Header.module.scss";
 import Image from "next/image";
 
 import {MdKeyboardArrowDown} from "react-icons/md";
