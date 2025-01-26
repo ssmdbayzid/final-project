@@ -39,7 +39,7 @@ export const fetchCourses = async (page:any, keyword:any) => {
 }
 export const categoryFilter = async (category:any)=>{
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories/${category}`);
+        const response = await fetch(`${process.env.API_URL_Main}/api/categories/${category}`);
         if(!response.ok){
             return {success: false, error: `Failed to fetch category. Status: ${response.status}`,};
         }
@@ -52,7 +52,7 @@ export const categoryFilter = async (category:any)=>{
 
 export const getCourse = async (courseId: string) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/course/${courseId}`);
+        const response = await fetch(`${process.env.API_URL_Main}/api/course/${courseId}`);
         if(!response.ok){
             return {
                 success: false,
