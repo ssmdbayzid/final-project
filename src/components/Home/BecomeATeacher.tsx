@@ -12,7 +12,7 @@ export default function BecomeATeacher() {
                         width={500} height={400} className={styles.image} alt="banner"/>
                 </div>
                 <div className={styles.content}>
-                    <h1 className={styles.title}>Become a teacher</h1>
+                    <h1 className={styles.title}>Become a proud teacher</h1>
                     <p className={styles.para}>Become an instructor and change lives — including your own.</p>
                     <Link href="/" className={`btn ${styles.btn}`}>Get Started</Link>
                 </div>
