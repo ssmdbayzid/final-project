@@ -1,5 +1,5 @@
 import styles from './NewAddedCourse.module.scss'
-// import {courseData} from "@/assets/data";
+
 import loading from '@/assets/image/loader-ghoori.svg'
 import NewlyAddedCourseComponent from "@/components/Courses/NewlyAddedCourseComponent";
 import Link from "next/link";

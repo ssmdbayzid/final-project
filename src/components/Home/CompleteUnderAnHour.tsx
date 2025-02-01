@@ -1,4 +1,3 @@
-import {completeUnderAnHour} from "@/assets/data";
 
 import styles from "@/components/Home/PopularCourseCarousel.module.scss";
 import Image from "next/image";
