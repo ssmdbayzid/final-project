@@ -1,11 +1,25 @@
 import styles from './NewAddedCourse.module.scss'
-import {courseData} from "@/assets/data";
+// import {courseData} from "@/assets/data";
 import loading from '@/assets/image/loader-ghoori.svg'
 import NewlyAddedCourseComponent from "@/components/Courses/NewlyAddedCourseComponent";
 import Link from "next/link";
 
 
-export default function NewAddedCourse (){
+const getAllCourses = async ()=> {
+    try {
+        const data = await fetch(`${process.env.API_URL_Main}/api/course`);
+        const result = await data.json();
+        return result ? result : null;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+
+export default async function NewAddedCourse (){
+    const courses = await getAllCourses();
+    console.log(courses)
     return <div className={styles.newCourseArea}>
         <div className="container section">
             <div className={styles.courseContent}>
@@ -18,8 +32,8 @@ export default function NewAddedCourse (){
                         View All
                     </Link>
                 </div>
-                {!courseData ? loading :
-                    <NewlyAddedCourseComponent courses={courseData}/>
+                {courses.data.length < 1 ? loading:
+                    <NewlyAddedCourseComponent courses={courses.data}/>
                 }
             </div>
         </div>

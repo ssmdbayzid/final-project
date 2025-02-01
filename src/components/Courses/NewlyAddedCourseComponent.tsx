@@ -39,7 +39,7 @@ export default function NewlyAddedCourseComponent({courses}:any) {
                                     alt="course-image"
                                 />
                                 <div className={styles.cardContent}>
-                                    <Link href={`/all-courses/${course.id || ""}`}>
+                                    <Link href={`/all-courses/${course._id || ""}`}>
                                         <h2>{course.title || "Course Title"}</h2>
                                     </Link>
                                     <div className={styles.remarks}>
@@ -65,7 +65,7 @@ export default function NewlyAddedCourseComponent({courses}:any) {
                                             .split(" ")
                                             .slice(0, 10)
                                             .join(" ") + " "}
-                                        <Link href={`/all-courses/${course.id || ""}`}>
+                                        <Link href={`/all-courses/${course._id || ""}`}>
                                             ...Show Details
                                         </Link>
                                     </p>
