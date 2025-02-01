@@ -7,6 +7,10 @@ import Paragraph from "@/app/all-courses/[id]/_components/Paragraph";
 import styles from './CourseDetails.module.scss'
 import CourseDetailsActionButtons from "@/app/all-courses/[id]/_components/CourseDetailsActionButtons";
 import CourseFeatures from "@/app/all-courses/[id]/_components/CourseFeatures";
+import Teacher from "@/app/all-courses/[id]/_components/Teacher";
+import ClassRating from "@/app/all-courses/[id]/_components/ClassRating";
+import CustomerFeedback from "@/components/Home/CustomerFeedBack";
+import RelatedCourses from "@/app/all-courses/[id]/_components/RelatedCourse";
 interface PageProps {
     params: Promise<{ id: string }>;
 }
@@ -25,7 +29,8 @@ export default async function SingleCourse({ params }: PageProps) {
     const course = result?.data;
     console.log(course);
     return (
-        <div className="container section">
+        <div>
+            <div className="container section">
             {course && <div className={styles.contentArea}>
                 <div className={styles.courseImage}>
                     {course ? <Image
@@ -67,5 +72,11 @@ export default async function SingleCourse({ params }: PageProps) {
                 </div>
             </div>}
             {course && <CourseFeatures lessons={course?.lessons} />}
-        </div>)
+            <Teacher />
+                <ClassRating />
+                <CustomerFeedback />
+                <RelatedCourses course={course} />
+        </div>
+        </div>
+    )
 }

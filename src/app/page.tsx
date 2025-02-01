@@ -22,7 +22,9 @@ export default function Home() {
         <NewAddedCourse />
         <CompletedAnHour />
         <QuizBanner />
+        <div className="container">
         <CustomerFeedback />
+        </div>
         <BecomeATeacher />
         <Partner />
     </div>
