@@ -7,6 +7,8 @@ import NewAddedCourse from "@/components/Home/NewAddedCourse";
 import CompletedAnHour from "@/components/Home/CompleteUnderAnHour";
 import QuizBanner from "@/components/Home/QuizBanner";
 import CustomerFeedback from "@/components/Home/CustomerFeedBack";
+import BecomeATeacher from "@/components/Home/BecomeATeacher";
+import Partner from "@/components/Home/Partner";
 
 
 export default function Home() {
@@ -21,6 +23,8 @@ export default function Home() {
         <CompletedAnHour />
         <QuizBanner />
         <CustomerFeedback />
+        <BecomeATeacher />
+        <Partner />
     </div>
   );
 }
