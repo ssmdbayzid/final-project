@@ -14,7 +14,7 @@ export default function BecomeATeacher() {
                 <div className={styles.content}>
                     <h1 className={styles.title}>Become a teacher</h1>
                     <p className={styles.para}>Become an instructor and change lives — including your own.</p>
-                    <Link href="/become-teacher" className={`btn ${styles.btn}`}>Get Started</Link>
+                    <Link href="/" className={`btn ${styles.btn}`}>Get Started</Link>
                 </div>
             </div>
         </div>
