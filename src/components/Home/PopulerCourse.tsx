@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const getAllCourses = async ()=>{
     try{
-        const data =  await fetch(`http://localhost:3000/api/course`);
+        const data =  await fetch(`${process.env.API_URL_Main}/api/course`);
         const result  = await data.json();
         return result ? result : null;
     }
@@ -20,7 +20,7 @@ export default async function PopularCourse() {
     return (
         <div className="container section">
             <div className={styles.heading}>
-                <h1>Most Popular Courses</h1>
+                <h1>Most Popular Bundle</h1>
                 <Link href="/all-courses" className={` btn ${styles.btn}`}>All Course</Link>
             </div>
             <PopularCourseItems courses={courses} />
